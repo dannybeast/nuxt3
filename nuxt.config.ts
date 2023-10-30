@@ -3,11 +3,14 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ["normalize.css/normalize.css", "@/assets/scss/main.scss"],
   modules: [
-    // Simple usage
     "@nuxtjs/eslint-module",
     "@nuxtjs/stylelint-module",
     "@nuxtjs/i18n",
+    "@pinia/nuxt",
   ],
+  pinia: {
+    storesDirs: ["./stores/**"],
+  },
   i18n: {
     strategy: "prefix_except_default",
     defaultLocale: "ru",
@@ -16,7 +19,7 @@ export default defineNuxtConfig({
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_redirected",
-      redirectOn: "root", // recommended
+      redirectOn: "root",
     },
     locales: [
       {

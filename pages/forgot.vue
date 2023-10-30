@@ -1,14 +1,19 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "auth",
+  title: "pages.forgot.title",
+});
 useHead({
-  title: "Восстановить пароль",
-  meta: [{ name: "description", content: "Восстановить пароль" }],
   bodyAttrs: {
     class: "page-forgot",
   },
 });
+const { t } = useI18n();
 </script>
 <template>
-  <div>
-    <p>forgot page</p>
+  <div class="app-forgot">
+    <div class="app-forgot__container container">
+      <p>{{ t("pages.forgot.title") }}</p>
+    </div>
   </div>
 </template>

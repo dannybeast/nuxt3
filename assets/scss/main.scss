@@ -1,6 +1,55 @@
 @import "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap";
+@import "bootstrap/dist/css/bootstrap-grid";
+
+*{
+  box-sizing: border-box;
+}
 
 body {
   background: #EEE;
   font-family: $main-font;
+}
+
+
+.app-field-label{
+  display: block;
+  margin-bottom: 8px;
+}
+
+.app-field-input{
+  height: 45px;
+  padding-left: 20px;
+  border: solid 1px #ddd;
+  width: 100%;
+  outline: none !important;
+}
+
+.app-field-errors{
+  color: red;
+  margin-top: 5px;
+}
+
+.app-field{
+  &.is-error{
+    .app-field-label{
+      color: red;
+    }
+
+    .app-field-input{
+      border-color: red;
+    }
+  }
+}
+
+.app-btn{
+  height: 50px;
+  border:none;
+  font-family: $main-font;
+  background: $primary;
+  font-weight: 500;
+  cursor: pointer;
+
+  &--full{
+    width: 100%;
+  }
 }

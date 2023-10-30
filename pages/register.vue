@@ -1,14 +1,19 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "auth",
+  title: "pages.register.title",
+});
 useHead({
-  title: "Регистрация",
-  meta: [{ name: "description", content: "Регистрация" }],
   bodyAttrs: {
     class: "page-register",
   },
 });
+const { t } = useI18n();
 </script>
 <template>
-  <div>
-    <p>register page</p>
+  <div class="app-register">
+    <div class="app-register__container container">
+      <p>{{ t("pages.register.title") }}</p>
+    </div>
   </div>
 </template>

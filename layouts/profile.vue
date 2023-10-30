@@ -31,17 +31,17 @@ const title = computed(() => t(route.meta.title));
         </template>
       </Head>
       <Body>
-        <div class="app-default-layout">
-          <AppHeader class="app-default-layout__header" />
+        <div class="app-profile-layout">
+          <AppHeader class="app-profile-layout__header" />
           <slot />
-          <AppFooter class="app-default-layout__footer" />
+          <AppFooter class="app-profile-layout__footer" />
         </div>
       </Body>
     </Html>
   </div>
 </template>
 <style lang="scss">
-.app-default-layout {
+.app-profile-layout {
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;

@@ -1,3 +1,5 @@
 <template>
-  <div>footer</div>
+  <div class="app-footer">
+    <div class="app-footer__container container">footer</div>
+  </div>
 </template>

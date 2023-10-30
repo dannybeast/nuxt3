@@ -1,14 +1,103 @@
 <script setup lang="ts">
+import { useVuelidate } from "@vuelidate/core";
+import { useMyComposable } from "@/composables/i18n-validators";
+
+definePageMeta({
+  layout: "auth",
+  title: "pages.login.title",
+});
 useHead({
-  title: "Авторизация",
-  meta: [{ name: "description", content: "Авторизация" }],
   bodyAttrs: {
     class: "page-login",
   },
 });
+const { t } = useI18n();
+const { required, minLength } = useMyComposable();
+
+const form = reactive({
+  login: "",
+  password: "",
+});
+
+const rules = computed(() => {
+  return {
+    login: { required, minLength: minLength(3) },
+    password: { required, minLength: minLength(6) },
+  };
+});
+
+const onSubmit = async () => {
+  const isFormCorrect = await v$.value.$validate();
+  if (!isFormCorrect) return;
+  console.log("onSubmit", form);
+};
+
+const v$ = useVuelidate(rules, form);
 </script>
+
 <template>
-  <div>
-    <p>Login page</p>
+  <div class="app-login">
+    <h1 class="app-login__title">{{ t("pages.login.title") }}</h1>
+
+    <form @submit.prevent="onSubmit()">
+      <div
+        class="app-login__field app-field"
+        :class="{ 'is-error': v$.login.$errors.length }"
+      >
+        <label class="app-field-label">Login:</label>
+        <input
+          v-model="form.login"
+          type="text"
+          class="app-field-input"
+          autocomplete="off"
+        />
+        <div
+          v-for="error of v$.login.$errors"
+          :key="error.$uid"
+          class="app-field-errors"
+        >
+          <small>{{ error.$message }}</small>
+        </div>
+      </div>
+      <div
+        class="app-login__field app-field"
+        :class="{ 'is-error': v$.password.$errors.length }"
+      >
+        <label class="app-field-label">Password:</label>
+        <input
+          v-model="form.password"
+          type="password"
+          class="app-field-input"
+          autocomplete="off"
+        />
+        <div
+          v-for="error of v$.password.$errors"
+          :key="error.$uid"
+          class="app-field-errors"
+        >
+          <small>{{ error.$message }}</small>
+        </div>
+      </div>
+      <button class="app-btn app-btn--full">Login</button>
+    </form>
   </div>
 </template>
+
+<style lang="scss">
+.app-login {
+  width: 400px;
+  max-width: 100%;
+  margin: auto;
+
+  &__title {
+    font-size: 24px;
+  }
+
+  &__field {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+}
+</style>
+~/composables/i18n-validators

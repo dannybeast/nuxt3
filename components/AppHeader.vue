@@ -1,8 +1,14 @@
 <template>
   <div class="app-header">
-    <NuxtLink to="/" class="app-header__logo">
-      <img src="/img/logo.svg" alt="" />
-    </NuxtLink>
+    <div class="app-header__container container">
+      <div class="app-header__row">
+        <NuxtLink to="/" class="app-header__logo">
+          <img src="/img/logo.svg" alt="" />
+        </NuxtLink>
+
+        <app-lang></app-lang>
+      </div>
+    </div>
   </div>
 </template>
 <style lang="scss">
@@ -11,8 +17,15 @@
   color: #fff;
   padding: 30px;
 
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &__logo {
     display: block;
+    margin-right: 30px;
 
     img {
       display: block;

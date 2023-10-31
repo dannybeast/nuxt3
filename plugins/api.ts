@@ -1,6 +1,6 @@
-import axios from "axios";
+import { $fetch, type FetchOptions } from "ofetch";
 import { defineNuxtPlugin } from "#app";
-import AuthModule from "~/api/auth";
+import AuthModule from "~/api/modules/auth";
 
 interface IApiInstance {
   auth: AuthModule;
@@ -8,19 +8,19 @@ interface IApiInstance {
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
-  const token = "11212";
+  const token = useCookie("token");
 
-  const axiosInstance = axios.create({
+  const fetchOptions: FetchOptions = {
     baseURL: config.public.apiUrl,
     headers: {
-      common: {
-        Authorization: `Bearer ${token}`,
-      },
+      Authorization: `Bearer ${token.value}`,
     },
-  });
+  };
+
+  const apiFetcher = $fetch.create(fetchOptions);
 
   const modules: IApiInstance = {
-    auth: new AuthModule(axiosInstance),
+    auth: new AuthModule(apiFetcher),
   };
 
   return {

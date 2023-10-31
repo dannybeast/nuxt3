@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxtjs/stylelint-module",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
+    "nuxt-icons",
   ],
   pinia: {
     storesDirs: ["./stores/**"],

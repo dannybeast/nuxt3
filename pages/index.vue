@@ -7,36 +7,39 @@ useHead({
     class: "page-index",
   },
 });
-// const { $api } = useNuxtApp();
+const { $api } = useNuxtApp();
 const localePath = useLocalePath();
 const { t } = useI18n();
 const products = ref();
 
+const token = useCookie("token");
+token.value = "token111";
+
+// Client
 const getData = async () => {
-  try {
-    // const { data } = await useFetch("/api/hello");
-
-    const { data } = await useAsyncData(`products`, () => {
-      return $fetch("https://dummyjson.com/products/1");
-      // return $api.auth.get();
-    });
-
-    console.log(data.value);
-    // const response = await $api.auth.get();
-
-    products.value = data.value;
-    // console.log(response);
-    // allow user access into the app
-  } catch (error) {
-    // console.error(error);
-  }
+  const data = await $api.auth.getData();
+  products.value = data;
 };
+
+// SSR
+// const getData = async () => {
+//   try {
+//     const { data } = await useAsyncData(`products`, () => {
+//       return $api.auth.getData();
+//     });
+
+//     products.value = data.value;
+//   } catch (error) {
+//     // console.error(error);
+//   }
+// };
 
 getData();
 </script>
 <template>
   <div class="app-home">
-    <p class="penis">{{ products.title }}</p>
+    <p class="test">{{ products?.title }}</p>
+    <nuxt-icon name="telegram" class="telegram-icon" />
     <div class="app-home__container container">
       <ul>
         <li>

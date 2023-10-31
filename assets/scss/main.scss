@@ -53,3 +53,14 @@ body {
     width: 100%;
   }
 }
+
+
+.nuxt-icon {
+  vertical-align: top;
+  display: inline-block;
+
+  svg{
+    margin-bottom: 0 !important;
+  }
+}
+

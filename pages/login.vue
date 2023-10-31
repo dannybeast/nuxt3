@@ -2,6 +2,10 @@
 import { useVuelidate } from "@vuelidate/core";
 import { useMyComposable } from "@/composables/i18n-validators";
 
+const { $api } = useNuxtApp();
+const { t } = useI18n();
+const { required, minLength } = useMyComposable();
+
 definePageMeta({
   layout: "auth",
   title: "pages.login.title",
@@ -11,8 +15,6 @@ useHead({
     class: "page-login",
   },
 });
-const { t } = useI18n();
-const { required, minLength } = useMyComposable();
 
 const form = reactive({
   login: "",
@@ -29,7 +31,14 @@ const rules = computed(() => {
 const onSubmit = async () => {
   const isFormCorrect = await v$.value.$validate();
   if (!isFormCorrect) return;
-  console.log("onSubmit", form);
+
+  try {
+    const response = await $api.auth.login(form);
+    console.log(response);
+    // allow user access into the app
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const v$ = useVuelidate(rules, form);

@@ -26,13 +26,13 @@ export default defineNuxtConfig({
         code: "en",
         iso: "en-US",
         name: "English",
-        file: "en-US.js",
+        file: "en-US.ts",
       },
       {
         code: "ru",
         iso: "ru-RU",
         name: "Русский",
-        file: "ru-RU.js",
+        file: "ru-RU.ts",
       },
     ],
   },
@@ -43,6 +43,11 @@ export default defineNuxtConfig({
           additionalData: '@use "@/assets/scss/_vars.scss" as *;',
         },
       },
+    },
+  },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
     },
   },
 });

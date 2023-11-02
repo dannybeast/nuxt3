@@ -7,15 +7,19 @@ class AuthModule extends HttpBase {
   async login(data: Auth.ILogin): Promise<Auth.ILoginResponse> {
     return await this.request<Auth.ILoginResponse>(
       "POST",
-      `${this.endpoint}.login`,
+      `${this.endpoint}/login`,
       data
     );
+  }
+
+  async getData() {
+    return await this.request("GET", `${this.endpoint}/getData`);
   }
 
   async register(data: Auth.IRegister): Promise<Auth.IRegisterResponse> {
     return await this.request<Auth.IRegisterResponse>(
       "POST",
-      `${this.endpoint}.register`,
+      `${this.endpoint}/register`,
       data
     );
   }

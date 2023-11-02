@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: "auth",
+  middleware: "sign",
   title: "pages.forgot.title",
 });
 useHead({

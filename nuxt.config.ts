@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  ssr: true,
   css: [
     "normalize.css/normalize.css",
     "primevue/resources/themes/lara-light-teal/theme.css",

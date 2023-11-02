@@ -26,7 +26,6 @@ const title = computed(() => t(route.meta.title));
       </template>
     </Head>
     <Body>
-      <AppHeader class="app-default-layout__header" />
       <div class="app-auth-layout">
         <slot />
       </div>

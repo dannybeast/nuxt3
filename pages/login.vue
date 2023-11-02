@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { useVuelidate } from "@vuelidate/core";
+import { storeToRefs } from "pinia";
 import { useValidateTranslated } from "@/composables/useValidateTranslated";
+import { useAuthStore } from "@/stores/auth";
 
-const { $api } = useNuxtApp();
 const { t } = useI18n();
 const { required, minLength } = useValidateTranslated();
+const { login } = useAuthStore();
+const { loading } = storeToRefs(useAuthStore());
 
 definePageMeta({
   layout: "auth",
+  middleware: "sign",
   title: "pages.login.title",
 });
+
 useHead({
   bodyAttrs: {
     class: "page-login",
@@ -31,15 +36,8 @@ const rules = computed(() => {
 const onSubmit = async () => {
   const isFormCorrect = await v$.value.$validate();
   if (!isFormCorrect) return;
-
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const response = await $api.auth.login(form);
-
-    // console.log(response);
-  } catch (error) {
-    // console.error(error);
-  }
+  await login(form);
+  window.location.reload();
 };
 
 const v$ = useVuelidate(rules, form);
@@ -49,6 +47,7 @@ const v$ = useVuelidate(rules, form);
   <div class="app-login">
     <h1 class="app-login__title">{{ t("pages.login.title") }}</h1>
 
+    <div v-show="loading" class="app-loader app-loader--absolute">loading</div>
     <form @submit.prevent="onSubmit()">
       <div
         class="app-login__field app-field"
@@ -98,6 +97,7 @@ const v$ = useVuelidate(rules, form);
   width: 400px;
   max-width: 100%;
   margin: auto;
+  position: relative;
 
   &__title {
     font-size: 24px;
@@ -110,4 +110,3 @@ const v$ = useVuelidate(rules, form);
   }
 }
 </style>
-~/composables/i18n-validators

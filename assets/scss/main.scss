@@ -9,12 +9,12 @@
 }
 
 html {
-  font-family: var(--main-font);
   font-size: var(--main-font-size);
 }
 
 body {
   background: #eee;
+  font-family: var(--main-font);
 }
 
 .app-field-label {
@@ -66,5 +66,17 @@ body {
 
   svg {
     margin-bottom: 0 !important;
+  }
+}
+
+.app-loader {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--absolute {
+    position: absolute;
+    inset: 0;
   }
 }

@@ -9,11 +9,15 @@ interface IApiInstance {
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
   const token = useCookie("token");
+  let headers = {};
+
+  if (token.value) {
+    headers = { Authorization: `Bearer ${token.value}` };
+  }
+
   const fetchOptions: FetchOptions = {
     baseURL: config.public.apiUrl,
-    headers: {
-      Authorization: `Bearer ${token.value}`,
-    },
+    headers: { ...headers },
   };
 
   const apiFetch = $fetch.create(fetchOptions);

@@ -1,5 +1,8 @@
 export interface ILoginResponse {
-  result: true;
+  auth: {
+    access_token: string;
+    refresh_expires_in: number;
+  };
 }
 export interface IRegisterResponse {
   result: true;

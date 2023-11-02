@@ -14,8 +14,8 @@ const localePath = useLocalePath();
 // const errorHandler = useErrorHandler();
 const { t } = useI18n();
 
-const token = useCookie("token");
-token.value = "token111";
+// const token = useCookie("token");
+// token.value = "token111";
 
 // Client
 // const getData = async () => {

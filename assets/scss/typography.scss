@@ -1,0 +1,71 @@
+.typography {
+  line-height: var(--main-line-height);
+  font-size: var(--main-font-size);
+  color: var(--main-font-color);
+
+  & > * {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      position: relative;
+      padding-left: rem(30);
+      margin-bottom: rem(15);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        content: "";
+        width: rem(8);
+        height: rem(8);
+        display: block;
+        position: absolute;
+        top: 0.6em;
+        left: 0;
+        background: #000;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: myCounter;
+    padding: 0;
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    li {
+      position: relative;
+      list-style: none;
+      padding-left: rem(24);
+      margin-bottom: 30px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        content: counter(myCounter) ".";
+        counter-increment: myCounter;
+        font-weight: 500;
+        font-size: rem(18);
+        background: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}

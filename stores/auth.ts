@@ -22,7 +22,7 @@ export const useAuthStore = defineStore("auth", {
             username,
             password,
           },
-        },
+        }
       );
       this.loading = pending;
 

@@ -13,7 +13,7 @@
 </template>
 <style lang="scss">
 .app-header {
-  background: $primary;
+  background: var(--primary-color);
   color: #fff;
   padding: 30px;
 

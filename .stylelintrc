@@ -1,32 +1,25 @@
 {
-   "ignoreFiles":[
-      "**/*.js",
-      "**/*.md"
-   ],
-   "overrides":[
-      {
-         "files":[
-            "**/*.(scss|css|html|vue)"
-         ],
-         "customSyntax":"postcss-scss"
-      },
-      {
-         "files":[
-            "**/*.(html|vue)"
-         ],
-         "customSyntax":"postcss-html"
-      }
-   ],
-   "extends":[
-      "stylelint-config-standard-scss",
-      "stylelint-config-recommended-vue"
-   ],
-   "rules":{
-       "indentation": 2,
-        "string-quotes": "double",
-        "no-duplicate-selectors": true,
-        "selector-no-qualifying-type": true,
-        "selector-combinator-space-after": "always",
-        "selector-attribute-quotes": "always"
-   }
+  "ignoreFiles": ["**/*.js", "**/*.md"],
+  "overrides": [
+    {
+      "files": ["**/*.(scss|css|html|vue)"],
+      "customSyntax": "postcss-scss"
+    },
+    {
+      "files": ["**/*.(html|vue)"],
+      "customSyntax": "postcss-html"
+    }
+  ],
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recommended-vue"
+  ],
+  "rules": {
+    "indentation": 2,
+    "string-quotes": "double",
+    "no-duplicate-selectors": true,
+    "selector-no-qualifying-type": true,
+    "selector-combinator-space-after": "always",
+    "selector-attribute-quotes": "always"
+  }
 }

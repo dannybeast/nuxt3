@@ -1,36 +1,24 @@
-import HttpFactory from "../factory";
-// interface ILoginResponse {
-//   result: true;
-// }
-// interface IRegisterResponse {
-//   result: true;
-// }
-// interface ILogin {
-//   login: String;
-//   password: String;
-// }
-// interface IRegister {
-//   login: String;
-//   password: String;
-// }
-class AuthModule extends HttpFactory {
-  private url = "/auth";
+import HttpBase from "../HttpBase";
+import * as Auth from "@/types/auth";
 
-  // constructor(axiosInstance: any) {
-  //   this.axios = axiosInstance;
-  // }
+class AuthModule extends HttpBase {
+  protected readonly endpoint = "/auth";
 
-  // async login(data: ILogin): Promise<ILoginResponse> {
-  //   return await this.axios.post(`${this.url}.login`, data);
-  // }
-
-  async getData() {
-    return await this.call("GET", `https://dummyjson.com/products/1`);
+  async login(data: Auth.ILogin): Promise<Auth.ILoginResponse> {
+    return await this.request<Auth.ILoginResponse>(
+      "POST",
+      `${this.endpoint}.login`,
+      data
+    );
   }
 
-  // async register(data: IRegister): Promise<IRegisterResponse> {
-  //   return await this.axios.post(`${this.url}.register`, data);
-  // }
+  async register(data: Auth.IRegister): Promise<Auth.IRegisterResponse> {
+    return await this.request<Auth.IRegisterResponse>(
+      "POST",
+      `${this.endpoint}.register`,
+      data
+    );
+  }
 }
 
 export default AuthModule;

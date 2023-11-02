@@ -9,7 +9,6 @@ interface IApiInstance {
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
   const token = useCookie("token");
-
   const fetchOptions: FetchOptions = {
     baseURL: config.public.apiUrl,
     headers: {
@@ -17,10 +16,10 @@ export default defineNuxtPlugin(() => {
     },
   };
 
-  const apiFetcher = $fetch.create(fetchOptions);
+  const apiFetch = $fetch.create(fetchOptions);
 
   const modules: IApiInstance = {
-    auth: new AuthModule(apiFetcher),
+    auth: new AuthModule(apiFetch),
   };
 
   return {

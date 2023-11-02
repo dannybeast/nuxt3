@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useVuelidate } from "@vuelidate/core";
-import { useMyComposable } from "@/composables/i18n-validators";
+import { useValidateTranslated } from "@/composables/useValidateTranslated";
 
 const { $api } = useNuxtApp();
 const { t } = useI18n();
-const { required, minLength } = useMyComposable();
+const { required, minLength } = useValidateTranslated();
 
 definePageMeta({
   layout: "auth",
@@ -33,11 +33,12 @@ const onSubmit = async () => {
   if (!isFormCorrect) return;
 
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const response = await $api.auth.login(form);
-    console.log(response);
-    // allow user access into the app
+
+    // console.log(response);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
 };
 

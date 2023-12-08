@@ -25,6 +25,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "node-sass": "^9.0.0",
     "nuxt": "^3.8.2",
+    "nuxt-primevue": "^0.2.2",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "stylelint": "^15.11.0",

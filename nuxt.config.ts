@@ -1,20 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  telemetry: false,
   ssr: true,
   css: [
     "normalize.css/normalize.css",
     // "primevue/resources/themes/lara-light-teal/theme.css",
     "@/assets/scss/main.scss",
   ],
+  devServer: {
+    port: 8000,
+    host: "127.0.0.1",
+  },
   modules: [
     "@nuxtjs/eslint-module",
     "@nuxtjs/stylelint-module",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
     "nuxt-icons",
-    // "nuxt-primevue",
+    "nuxt-primevue",
   ],
   pinia: {
     storesDirs: ["./stores/**"],

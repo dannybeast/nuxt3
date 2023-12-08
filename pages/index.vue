@@ -46,12 +46,6 @@ const { t } = useI18n();
   <div class="app-home">
     <div class="app-home__container container">
       <div class="typography">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          perspiciatis modi veniam voluptates! Magnam fugiat tenetur quis
-          distinctio, reiciendis ad voluptatibus quaerat animi veritatis porro
-          saepe molestias autem deserunt voluptate?
-        </p>
         <ul>
           <li>
             <NuxtLink :to="localePath('/')">{{

@@ -1,10 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  telemetry: false,
   ssr: true,
   css: [
     "normalize.css/normalize.css",
-    "primevue/resources/themes/lara-light-teal/theme.css",
+    // "primevue/resources/themes/lara-light-teal/theme.css",
     "@/assets/scss/main.scss",
   ],
   modules: [
@@ -13,12 +14,11 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@pinia/nuxt",
     "nuxt-icons",
-    "nuxt-primevue",
+    // "nuxt-primevue",
   ],
   pinia: {
     storesDirs: ["./stores/**"],
   },
-  primevue: {},
   i18n: {
     strategy: "prefix_except_default",
     defaultLocale: "ru",

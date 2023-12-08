@@ -1,5 +1,3 @@
-import { useToast } from "primevue/usetoast";
-
 interface IError {
   status: number;
   message: string;
@@ -7,10 +5,10 @@ interface IError {
 }
 
 export function useErrorHandler() {
-  const toast = useToast();
+  const { $toast } = useNuxtApp();
 
   const errorHandler = (error: IError) => {
-    toast.add({
+    $toast.add({
       severity: "error",
       summary: `Error ${error.status} - ${error.data}`,
       detail: error.message,
